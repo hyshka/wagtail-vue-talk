@@ -32,3 +32,4 @@ npm run serve
 - vue-meta
 - dockerize
 - try yarn?
+- cmsadmin on subdomain?
