@@ -28,8 +28,22 @@ cd vue
 npm run serve
 ```
 
+## Docker
+```
+# move into project folder
+cd vue
+
+# build image and start container
+make up
+
+# enter container
+make enter
+
+# stop and remove container
+make clean
+```
+
 ## misc notes
 - vue-meta
-- dockerize
-- try yarn?
 - cmsadmin on subdomain?
+- try yarn?
