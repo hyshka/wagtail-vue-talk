@@ -1,0 +1,11 @@
+# Django Aliases
+alias dj="django-admin.py"
+alias djr="django-admin.py runserver 0.0.0.0:8000"
+
+# Print Message
+# Pass format specifies to printf which tells printf to take each argument it
+# gets and print it, followed by a newline.
+printf "%s\n" \
+  "Here are some common aliases for our stack:" \
+  'dj="django-admin.py"' \
+  'djr="django-admin.py runserver 0.0.0.0:8000"'
