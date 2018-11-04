@@ -1,0 +1,6 @@
+# Test dependencies go here.
+-r req_base.txt
+pytest
+pytest-cov
+pytest-django
+model-mommy

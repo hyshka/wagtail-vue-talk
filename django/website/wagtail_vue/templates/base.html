@@ -1,0 +1,36 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" itemscope itemtype="http://schema.org/Website">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block page_title %}{% endblock page_title %}</title>
+  <meta name="description" content="{% block page_description %}{% endblock page_description %}" />
+
+  {% block extra_meta %}{% endblock extra_meta %}
+
+  <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  {% include "includes/accessibility.html" with header=header_class %}
+
+  <div class="uk-offcanvas-content">
+
+    {% block header %}{% endblock header %}
+
+    {% block content %}
+
+    {% block footer %}{% endblock footer %}
+  </div>
+
+  {% wagtailuserbar %}
+
+  <script defer src="{% static 'js/app.js' %}"></script>
+  {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>
