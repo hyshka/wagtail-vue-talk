@@ -1,5 +1,5 @@
 <template>
-  <component :is="dynamicComponent"></component>
+  <component :is="dynamicComponent" :page="responseData"></component>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {
   data() {
     return {
       dynamicComponent: null,
+      responseData: null,
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -23,18 +24,16 @@ export default {
     console.log("WagtailPageHandler.beforeRouteEnter", to, from)
 
     axios
-      .get(`/api/v2/pages/find/?html_path=${to.fullPath}`)
+      .get(`//localhost:8000/api/v2/pages/find/?html_path=${to.fullPath}`)
       .then(response => {
         console.log("WagtailPageHandler.beforeRouteEnter response", response)
 
         // catch 302/200 response, render matching Vue component
-        // response.meta.type
-        // TODO: test passing response as param
-        // next({ component: WagtailPage, params: { page: response }})
-
+        // pass page data from response to component
         next(vm => {
           // access to component instance via `vm`
           vm.dynamicComponent = WagtailPage
+          vm.responseData = response.data
         })
       })
       .catch(error => {
@@ -47,6 +46,7 @@ export default {
         next(vm => {
           // access to component instance via `vm`
           vm.dynamicComponent = NotFound
+          vm.responseData = null
         })
       })
 
