@@ -142,6 +142,7 @@ TEMPLATES = [
 # ======== MIDDLEWARE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
 MIDDLEWARE = (
+    'corsheaders.middleware.CorsMiddleware',
     # Default Django middleware.
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -190,6 +191,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'modelcluster',
     'taggit',
+    'corsheaders',
 
     'pages',
 )

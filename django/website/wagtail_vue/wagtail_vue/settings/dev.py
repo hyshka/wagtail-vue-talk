@@ -56,6 +56,8 @@ ALLOWED_HOSTS += [ # noqa
     'backend',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 try:
     from .local_dev import * # noqa
 except ImportError:
