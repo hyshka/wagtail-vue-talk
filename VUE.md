@@ -76,7 +76,7 @@ router.beforeEach((to, from, next) => {
     next({ name: response.meta.type, params: { page: response }})
   }).catch(error => {
     // catch 404 response, page doesn't exist
-    next({ name: "404" )
+    next({ name: "404" })
   })
 })
 ```
@@ -92,6 +92,9 @@ router.beforeEach((to, from, next) => {
 
 ## SSR/Prerendering
 TODO
+- https://ssr.vuejs.org/
+- https://nuxtjs.org/
+- https://github.com/chrisvfritz/prerender-spa-plugin
 
 ## Noteworthy packages
 - vue.js https://vuejs.org
@@ -102,6 +105,6 @@ TODO
 - axios https://github.com/axios/axios
 
 ## Misc
-- cmsadmin on subdomain?
+- admin on subdomain?
 - try yarn?
 - do we even need vuex?
