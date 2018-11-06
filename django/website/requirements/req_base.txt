@@ -5,4 +5,4 @@ django-extensions==1.*
 Pillow==4.*
 psycopg2
 wagtail==2.3
-django-cors-headers=2.4.*
+django-cors-headers==2.4.*
