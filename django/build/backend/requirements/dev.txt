@@ -1,5 +1,0 @@
-# Local development dependencies go here
--r req_base.txt
-django-debug-toolbar==1.9.1
-django-debug-toolbar-template-profiler
-Werkzeug==0.10.*

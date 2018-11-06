@@ -1,3 +1,0 @@
-# production that isn't in development. ie. monitoring services.
--r req_base.txt
-

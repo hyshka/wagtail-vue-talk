@@ -23,6 +23,7 @@ export default {
 
     console.log("WagtailPageHandler.beforeRouteEnter", to, from)
 
+    // TODO: set hostname + port dynamically
     axios
       .get(`//localhost:8000/api/v2/pages/find/?html_path=${to.fullPath}`)
       .then(response => {

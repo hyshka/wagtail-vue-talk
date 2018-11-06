@@ -19,7 +19,7 @@ ENV LC_ALL C.UTF-8
 RUN pip3 install --upgrade pip
 
 # Add the project requirements
-ADD requirements /opt/requirements
+ADD website/requirements /opt/requirements
 
 # Install the requirements, remove 3 for wagtail
 RUN /bin/bash -c 'cd /opt \
@@ -36,7 +36,3 @@ EXPOSE 8000
 
 # Add bash aliases
 ADD bash_aliases /root/.bash_aliases
-
-# Add the entry script
-ADD entry.sh /opt/
-RUN chmod 755 /opt/entry.sh

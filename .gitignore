@@ -35,9 +35,6 @@ Desktop.ini
 
 # Front-end files
 node_modules
-raw/bower
-.sass-cache
-prototype
 
 local_production.py
 local_dev.py

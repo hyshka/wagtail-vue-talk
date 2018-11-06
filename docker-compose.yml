@@ -1,0 +1,28 @@
+version: '3'
+services:
+  backend:
+    network_mode: "bridge"
+    build: ./django
+    container_name: wagtail_vue_backend
+    image: wagtail_vue:backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${WINDIR}./django:/app
+    stdin_open: true
+    command: /bin/sh -c "while true; do echo hi; sleep 1; done;"
+  frontend:
+    network_mode: "bridge"
+    links:
+      - backend
+    build: ./vue
+    container_name: wagtail_vue_frontend
+    image: wagtail_vue:frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./vue:/app
+      - /app/node_modules
+    stdin_open: true
+    command: /bin/sh -c "while true; do echo hi; sleep 1; done;"
+
