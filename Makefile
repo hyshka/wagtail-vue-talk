@@ -16,7 +16,7 @@ upwin:  ## Bring the Docker container up for bash on ubuntu folk
 	export WINDIR="$(subst /mnt/c,//c,$(CURDIR))/" && make up
 
 lint: build ## Lint the python code.
-	docker run -v $(CURDIR):/app $(IMAGENAME_BACKEND) /bin/bash -c 'flake8 website'
+	docker run -v $(CURDIR)/django:/app $(IMAGENAME_BACKEND) /bin/bash -c 'flake8 website'
 
 down: ## Stop the backend Docker container
 	docker-compose -p wagtail_vue stop
