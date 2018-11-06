@@ -5,13 +5,21 @@ from django.conf.urls import include, static, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-import adminactions.actions as actions
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
 
-actions.add_to_site(admin.site)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^admin/adminactions/', include('adminactions.urls')),
+    url(r'^django-admin/', admin.site.urls),
+
+    url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
+
+    # For anything not caught by a more specific rule above, hand over to
+    # Wagtail's page serving mechanism. This should be the last pattern in
+    # the list:
+    url(r'', include(wagtail_urls)),
 ]
 
 if settings.DEBUG:
