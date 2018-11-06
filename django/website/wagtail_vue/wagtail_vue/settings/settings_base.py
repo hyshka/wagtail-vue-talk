@@ -148,6 +148,8 @@ MIDDLEWARE = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 # ======== END MIDDLEWARE CONFIGURATION
 
@@ -171,6 +173,21 @@ INSTALLED_APPS = (
 
     'adminactions',
     'django_extensions',
+
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
+    'modelcluster',
+    'taggit',
 )
 # ======== END APP CONFIGURATION
 
@@ -205,6 +222,11 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = 'wsgi.application'
 # ======== END WSGI CONFIGURATION
+
+
+# ======== WAGTAIL SETTINGS CONFIGURATION
+WAGTAIL_SITE_NAME = "Wagtail/Vue Website"
+# ======== END WAGTAIL SETTINGS CONFIGURATION
 
 
 # ======== ERROR MESSAGE FOR MISSING ENVIRONMENT VARIABLES

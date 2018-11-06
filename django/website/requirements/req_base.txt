@@ -1,9 +1,7 @@
 bpython
 Django==2.1
-# django-admin-honeypot==1.*
 django-adminactions==1.*
 django-extensions==1.*
-# django-widget-tweaks==1.4.*
 Pillow==4.*
 psycopg2
-
+wagtail==2.3
