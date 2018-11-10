@@ -12,7 +12,7 @@ class HomePage(Page):
     """A home page class."""
 
     template = "cms/pages/home_page.html"
-    subpage_types = []
+    subpage_types = ['pages.FlexPage']
 
     banner_subtitle = models.CharField(
         max_length=50, blank=True, null=True, help_text="An optional banner subtitle"
@@ -43,3 +43,24 @@ class HomePage(Page):
 
         verbose_name = "Home Page"
         verbose_name_plural = "Home Pages"
+
+
+class FlexPage(Page):
+    """A Flexible page class. Used for generic pages that don't have a true purpose."""
+
+    template = "cms/pages/flex_page.html"
+    subpage_types = []
+
+    content_panels = [
+        FieldPanel("title", classname="full title"),
+    ]
+
+    api_fields = [
+        APIField("title"),
+    ]
+
+    class Meta:
+        """Meta information."""
+
+        verbose_name = "Flex Page"
+        verbose_name_plural = "Flex Pages"
