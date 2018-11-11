@@ -51,3 +51,28 @@ class CardsBlock(blocks.StructBlock):
         template = "cms/pages/streamfields/richtext.html"
         icon = "edit"
         label = "Nested Streamfields"
+
+
+class CarouselBlock(blocks.StreamBlock):
+    """
+    Example of a StreamBlock.
+
+    Similar to a ListBlock, but allows multiple streams to be used inside
+    of this stream.
+
+    This is straight from the docs to demo an eample StreamBlock:
+    http://docs.wagtail.io/en/latest/topics/streamfield.html#streamblock
+    """
+
+    image = ImageChooserBlock()
+    quotation = blocks.StructBlock([
+        ('text', blocks.TextBlock()),
+        ('author', blocks.CharBlock()),
+    ])
+
+    class Meta:
+        """Provide additional meta information."""
+
+        icon = 'cogs'
+        label = "Carousel"
+        template = "cms/pages/streamfields/carousel.html"

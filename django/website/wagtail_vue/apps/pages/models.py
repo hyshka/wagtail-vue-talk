@@ -8,7 +8,7 @@ from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 from wagtail.core.fields import StreamField
 
-from .streamfields import RichTextBlock, ImageBlock, CardsBlock
+from .streamfields import RichTextBlock, ImageBlock, CardsBlock, CarouselBlock
 
 
 class HomePage(Page):
@@ -33,6 +33,7 @@ class HomePage(Page):
         ('richtext', RichTextBlock()),
         ('image', ImageBlock()),
         ('nested_streams', CardsBlock()),
+        ('carousel', CarouselBlock()),
     ], null=True)
 
     content_panels = [
