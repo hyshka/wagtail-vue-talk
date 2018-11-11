@@ -64,12 +64,21 @@ class FlexPage(Page):
     template = "cms/pages/flex_page.html"
     subpage_types = []
 
+    content = StreamField([
+        ('richtext', RichTextBlock()),
+        ('image', ImageBlock()),
+        ('nested_streams', CardsBlock()),
+        ('carousel', CarouselBlock()),
+    ], null=True)
+
     content_panels = [
         FieldPanel("title", classname="full title"),
+        StreamFieldPanel('content'),
     ]
 
     api_fields = [
         APIField("title"),
+        APIField("content"),
     ]
 
     class Meta:
