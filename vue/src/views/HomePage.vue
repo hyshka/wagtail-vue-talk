@@ -10,11 +10,12 @@
       </h2>
 
       <!-- {{ this.page.banner_image }} -->
-      <img :src="this.page.banner_image_thumbnail.url" :alt="this.page.banner_image.title">
+      <!-- TODO: don't hardcode wagtail domain -->
+      <img :src="'//localhost:8000' + this.page.banner_image_thumbnail.url" :alt="this.page.banner_image.title">
     </div>
 
     <!-- streamfields -->
-    <streamfield 
+    <streamfield
       v-for="block in this.page.content"
       :key="block.id"
       :block="block"
@@ -24,13 +25,13 @@
 
 <script>
 // @ is an alias to /src
-import Streamfield from '@/components/Streamfield.vue'
+// import Streamfield from '@/components/Streamfield.vue'
 
 export default {
   name: "HomePage",
-  components: {
-    Streamfield,
-  },
+  // components: {
+  //   Streamfield,
+  // },
   props: [
     "page",
   ],

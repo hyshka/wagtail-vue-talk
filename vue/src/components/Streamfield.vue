@@ -11,8 +11,9 @@ import find from "lodash/find"
 // @ is an alias to /src
 import Richtext from "@/components/streamfields/richtext.vue"
 import ImageBlock from "@/components/streamfields/image.vue"
-import NestedStreams from "@/components/streamfields/nested_streams.vue"
+import Cards from "@/components/streamfields/cards.vue"
 import Carousel from "@/components/streamfields/carousel.vue"
+import Quotation from "@/components/streamfields/quotation.vue"
 
 export default {
   name: "Streamfield",
@@ -22,8 +23,9 @@ export default {
   components: {
     Richtext,
     ImageBlock,
-    NestedStreams,
+    Cards,
     Carousel,
+    Quotation,
   },
   computed: {
     dynamicComponent() {
@@ -31,8 +33,5 @@ export default {
       return find(this.$options.components, obj => obj.name === this.block.type)
     },
   },
-  created() {
-  },
 }
 </script>
-

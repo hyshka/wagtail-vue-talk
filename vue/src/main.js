@@ -5,9 +5,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import Streamfield from '@/components/Streamfield.vue'
+
 Vue.config.productionTip = false
 
 Vue.use(VueMeta)
+
+Vue.component("streamfield", Streamfield)
 
 new Vue({
   router,
