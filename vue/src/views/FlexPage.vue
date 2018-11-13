@@ -10,13 +10,13 @@
 
 <script>
 // @ is an alias to /src
-import Streamfield from '@/components/Streamfield.vue'
+// import Streamfield from '@/components/Streamfield.vue'
 
 export default {
   name: "FlexPage",
-  components: {
-    Streamfield,
-  },
+  // components: {
+  //   Streamfield,
+  // },
   props: [
     "page",
   ],

@@ -8,10 +8,9 @@
       <h2 class="fw4 f2 lh-copy mt0 mb3">
         {{ this.page.banner_subtitle }}
       </h2>
-
-      <!-- {{ this.page.banner_image }} -->
-      <!-- TODO: don't hardcode wagtail domain -->
-      <img :src="'//localhost:8000' + this.page.banner_image_thumbnail.url" :alt="this.page.banner_image.title">
+      <wagtail-image
+        :id="this.page.banner_image.id"
+        ></wagtail-image>
     </div>
 
     <!-- streamfields -->
@@ -25,13 +24,13 @@
 
 <script>
 // @ is an alias to /src
-// import Streamfield from '@/components/Streamfield.vue'
+import WagtailImage from '@/components/WagtailImage.vue'
 
 export default {
   name: "HomePage",
-  // components: {
-  //   Streamfield,
-  // },
+  components: {
+    WagtailImage,
+  },
   props: [
     "page",
   ],
