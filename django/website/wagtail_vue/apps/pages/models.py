@@ -34,7 +34,7 @@ class HomePage(Page):
         ('image', ImageBlock()),
         ('nested_streams', CardsBlock()),
         ('carousel', CarouselBlock()),
-    ], null=True)
+    ], null=True, blank=True)
 
     content_panels = [
         FieldPanel("title", classname="full title"),
@@ -69,7 +69,7 @@ class FlexPage(Page):
         ('image', ImageBlock()),
         ('nested_streams', CardsBlock()),
         ('carousel', CarouselBlock()),
-    ], null=True)
+    ], null=True, blank=True)
 
     content_panels = [
         FieldPanel("title", classname="full title"),

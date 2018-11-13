@@ -105,6 +105,8 @@ TODO
 - axios https://github.com/axios/axios
 
 ## Misc
+- setup static host for staging
+- page preview?
 - admin on subdomain?
-- try yarn?
 - do we even need vuex?
+- try yarn?
