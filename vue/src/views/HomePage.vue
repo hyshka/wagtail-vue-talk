@@ -1,15 +1,24 @@
 <template>
   <div class="page">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h1>{{ this.page.title }}</h1>
-
     <!-- banner -->
-    {{ this.page.banner_subtitle }}
-    {{ this.page.banner_image }}
-    {{ this.page.banner_image_thumbnail }}
+    <div class="mw8 center tc ph4 pv5">
+      <h1 class="fw7 f1 lh-title mt0 mb3">
+        {{ this.page.title }}
+      </h1>
+      <h2 class="fw4 f2 lh-copy mt0 mb3">
+        {{ this.page.banner_subtitle }}
+      </h2>
+
+      <!-- {{ this.page.banner_image }} -->
+      <img :src="this.page.banner_image_thumbnail.url" :alt="this.page.banner_image.title">
+    </div>
 
     <!-- streamfields -->
-    <streamfield :content="this.page.content"></streamfield>
+    <streamfield 
+      v-for="block in this.page.content"
+      :key="block.id"
+      :block="block"
+      ></streamfield>
   </div>
 </template>
 

@@ -65,7 +65,5 @@ export default {
       return find(this.$options.components, obj => obj.name === pageType.replace("pages.", ""))
     },
   },
-  created() {
-  },
 }
 </script>
