@@ -2,20 +2,20 @@
   <div class="page">
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>{{ this.page.title }}</h1>
-    <div>
-      {{ this.page }}
-    </div>
+
+    <!-- streamfields -->
+    <streamfield :content="this.page.content"></streamfield>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import Streamfield from '@/components/Streamfield.vue'
 
 export default {
-  name: "WagtailPage",
+  name: "FlexPage",
   components: {
-    // HelloWorld
+    Streamfield,
   },
   props: [
     "page",

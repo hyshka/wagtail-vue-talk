@@ -3,13 +3,20 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import WagtailPage from "@/views/WagtailPage.vue"
-import NotFound from "@/views/NotFound.vue"
 import axios from "axios"
+import find from "lodash/find"
+
+// @ is an alias to /src
+import NotFound from "@/views/NotFound.vue"
+import HomePage from "@/views/HomePage.vue"
+import FlexPage from "@/views/FlexPage.vue"
 
 export default {
   name: "WagtailPageHandler",
+  components: {
+    HomePage,
+    FlexPage,
+  },
   data() {
     return {
       dynamicComponent: null,
@@ -33,7 +40,7 @@ export default {
         // pass page data from response to component
         next(vm => {
           // access to component instance via `vm`
-          vm.dynamicComponent = WagtailPage
+          vm.dynamicComponent = vm.getWagtailPage(response.data.meta.type)
           vm.responseData = response.data
         })
       })
@@ -50,7 +57,15 @@ export default {
           vm.responseData = null
         })
       })
-
+  },
+  methods: {
+    getWagtailPage(pageType) {
+      // return registered component that's name matches our Wagtail page type
+      // strip `pages.` from the Wagtail page type
+      return find(this.$options.components, obj => obj.name === pageType.replace("pages.", ""))
+    },
+  },
+  created() {
   },
 }
 </script>
