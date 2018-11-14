@@ -1,7 +1,11 @@
 <template>
-  <div class="image mw8 center ph4 pv4">
+  <div class="image-gallery mw8 center ph4 pv4 flex">
+    <!-- list block -->
     <wagtail-image
-      :id="this.block.value"
+      class="w-50 pa3 mr2"
+      v-for="image in this.block.value.images"
+      :key="image.id"
+      :id="image.ImageBlock"
       ></wagtail-image>
   </div>
 </template>
@@ -11,7 +15,7 @@
 import WagtailImage from '@/components/WagtailImage.vue'
 
 export default {
-  name: "image",
+  name: "ImageGalleryBlock",
   components: {
     WagtailImage,
   },

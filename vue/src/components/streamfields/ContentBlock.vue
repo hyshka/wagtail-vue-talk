@@ -1,8 +1,8 @@
 <template>
-  <div class="carousel mw8 center ph4 pv4">
+  <div class="content mw8 center ph4 pv4">
     <!-- stream block -->
     <streamfield
-      v-for="nestedBlock in this.block.value"
+      v-for="nestedBlock in this.block.value.content"
       :key="nestedBlock.id"
       :block="nestedBlock"
       ></streamfield>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "carousel",
+  name: "ContentBlock",
   props: [
     "block",
   ],

@@ -9,11 +9,15 @@
 import find from "lodash/find"
 
 // @ is an alias to /src
-import Richtext from "@/components/streamfields/richtext.vue"
-import ImageBlock from "@/components/streamfields/image.vue"
-import Cards from "@/components/streamfields/cards.vue"
-import Carousel from "@/components/streamfields/carousel.vue"
-import Quotation from "@/components/streamfields/quotation.vue"
+// content - nested stream (text, button, image)
+// image_gallery - list block (image)
+// call_to_action
+import ContentBlock from "@/components/streamfields/ContentBlock.vue"
+import ButtonBlock from "@/components/streamfields/ButtonBlock.vue"
+import RichTextBlock from "@/components/streamfields/RichTextBlock.vue"
+import ImageBlock from "@/components/streamfields/ImageBlock.vue"
+import ImageGalleryBlock from "@/components/streamfields/ImageGalleryBlock.vue"
+import CallToActionBlock from "@/components/streamfields/CallToActionBlock.vue"
 
 export default {
   name: "Streamfield",
@@ -21,11 +25,12 @@ export default {
     "block",
   ],
   components: {
-    Richtext,
+    ContentBlock,
+    ButtonBlock,
+    RichTextBlock,
     ImageBlock,
-    Cards,
-    Carousel,
-    Quotation,
+    ImageGalleryBlock,
+    CallToActionBlock,
   },
   computed: {
     dynamicComponent() {

@@ -57,9 +57,9 @@ class ContentBlock(blocks.StructBlock):
     """
 
     content = blocks.StreamBlock([
-        ('text', RichTextBlock()),
-        ('button', ButtonBlock()),
-        ('image', ImageBlock()),
+        ('RichTextBlock', RichTextBlock()),
+        ('ButtonBlock', ButtonBlock()),
+        ('ImageBlock', ImageBlock()),
     ])
 
     class Meta:
@@ -76,7 +76,7 @@ class ImageGalleryBlock(blocks.StructBlock):
     """
 
     images = blocks.ListBlock(blocks.StructBlock([
-        ('image', ImageChooserBlock(required=True)),
+        ('ImageBlock', ImageChooserBlock(required=True)),
     ]))
 
     class Meta:

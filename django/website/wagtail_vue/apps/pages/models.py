@@ -30,9 +30,9 @@ class HomePage(Page):
     )
 
     content = StreamField([
-        ('content', ContentBlock()),
-        ('image_gallery', ImageGalleryBlock()),
-        ('call_to_action', CallToActionBlock()),
+        ('ContentBlock', ContentBlock()),
+        ('ImageGalleryBlock', ImageGalleryBlock()),
+        ('CallToActionBlock', CallToActionBlock()),
     ], null=True, blank=True)
 
     content_panels = [
@@ -64,9 +64,9 @@ class FlexPage(Page):
     subpage_types = []
 
     content = StreamField([
-        ('content', ContentBlock()),
-        ('image_gallery', ImageGalleryBlock()),
-        ('call_to_action', CallToActionBlock()),
+        ('ContentBlock', ContentBlock()),
+        ('ImageGalleryBlock', ImageGalleryBlock()),
+        ('CallToActionBlock', CallToActionBlock()),
     ], null=True, blank=True)
 
     content_panels = [
