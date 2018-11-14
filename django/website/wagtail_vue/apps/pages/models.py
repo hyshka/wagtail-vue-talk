@@ -8,7 +8,7 @@ from wagtail.api import APIField
 from wagtail.images.api.fields import ImageRenditionField
 from wagtail.core.fields import StreamField
 
-from .streamfields import RichTextBlock, ImageBlock, CardsBlock, CarouselBlock
+from .streamfields import ContentBlock, ImageGalleryBlock, CallToActionBlock
 
 
 class HomePage(Page):
@@ -30,10 +30,9 @@ class HomePage(Page):
     )
 
     content = StreamField([
-        ('richtext', RichTextBlock()),
-        ('image', ImageBlock()),
-        ('nested_streams', CardsBlock()),
-        ('carousel', CarouselBlock()),
+        ('content', ContentBlock()),
+        ('image_gallery', ImageGalleryBlock()),
+        ('call_to_action', CallToActionBlock()),
     ], null=True, blank=True)
 
     content_panels = [
@@ -65,10 +64,9 @@ class FlexPage(Page):
     subpage_types = []
 
     content = StreamField([
-        ('richtext', RichTextBlock()),
-        ('image', ImageBlock()),
-        ('nested_streams', CardsBlock()),
-        ('carousel', CarouselBlock()),
+        ('content', ContentBlock()),
+        ('image_gallery', ImageGalleryBlock()),
+        ('call_to_action', CallToActionBlock()),
     ], null=True, blank=True)
 
     content_panels = [

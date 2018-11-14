@@ -1,17 +1,7 @@
 """Streamfields for Wagtail Pages."""
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
-
-
-class ImageBlock(ImageChooserBlock):
-    """Single image block. Inherits directly from ImageChooserBlock."""
-
-    class Meta:
-        """Provide additional meta information."""
-
-        template = "cms/pages/streamfields/image.html"
-        icon = "image"
-        label = "Image"
+from wagtail.documents.blocks import DocumentChooserBlock
 
 
 class RichTextBlock(blocks.RichTextBlock):
@@ -20,59 +10,94 @@ class RichTextBlock(blocks.RichTextBlock):
     class Meta:
         """Provide additional meta information."""
 
-        template = "cms/pages/streamfields/richtext.html"
         icon = "edit"
         label = "Richtext"
 
 
-class CardsBlock(blocks.StructBlock):
-    """Unlimited cards with a title, limited richtext, and an image field."""
+class ButtonBlock(blocks.StructBlock):
+    """Button block."""
 
-    card = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("title", blocks.CharBlock(required=True)),
-                (
-                    "content",
-                    blocks.RichTextBlock(
-                        features=["bold", "italic", "ol", "ul"],
-                        required=False,
-                    ),
-                ),
-                ("image", ImageChooserBlock(required=True)),
-                ("page", blocks.PageChooserBlock(required=True)),
-            ]
-        )
-    )
+    text = blocks.CharBlock(required=True)
+    page = blocks.PageChooserBlock(required=False)
+    document = DocumentChooserBlock(required=False)
+    external_link = blocks.CharBlock(required=False)
 
     class Meta:
-        """Provide additional meta information."""
+        """Provide attional meta information."""
 
-        template = "cms/pages/streamfields/richtext.html"
-        icon = "edit"
-        label = "Nested Streamfields"
+        icon = "link"
+        label = "Button"
 
 
-class CarouselBlock(blocks.StreamBlock):
+class ImageBlock(blocks.StructBlock):
+    """Image Content."""
+    POSITIONS_LRF_OPTIONS = (
+        ('left', 'Left'),
+        ('right', 'Right'),
+        ('full', 'Full'),
+    )
+
+    image = ImageChooserBlock(required=True)
+    caption = blocks.CharBlock(required=False)
+    align = blocks.ChoiceBlock(choices=POSITIONS_LRF_OPTIONS)
+
+    class Meta:
+        """Provide attional meta information."""
+
+        icon = "image"
+        label= "Image"
+
+
+class ContentBlock(blocks.StructBlock):
     """
-    Example of a StreamBlock.
-
-    Similar to a ListBlock, but allows multiple streams to be used inside
-    of this stream.
-
-    This is straight from the docs to demo an eample StreamBlock:
-    http://docs.wagtail.io/en/latest/topics/streamfield.html#streamblock
+    Content - stream block example
+        - Richtext
+        - Image (center, left, right)
+        - Button
     """
 
-    image = ImageChooserBlock()
-    quotation = blocks.StructBlock([
-        ('text', blocks.TextBlock()),
-        ('author', blocks.CharBlock()),
+    content = blocks.StreamBlock([
+        ('text', RichTextBlock()),
+        ('button', ButtonBlock()),
+        ('image', ImageBlock()),
     ])
 
     class Meta:
         """Provide additional meta information."""
 
-        icon = 'cogs'
-        label = "Carousel"
-        template = "cms/pages/streamfields/carousel.html"
+        icon = "doc-full"
+        label = "Content"
+
+
+class ImageGalleryBlock(blocks.StructBlock):
+    """
+    Image Gallery - list block example
+        - Image
+    """
+
+    images = blocks.ListBlock(blocks.StructBlock([
+        ('image', ImageChooserBlock(required=True)),
+    ]))
+
+    class Meta:
+        """Provide additional meta information."""
+
+        icon = "image"
+        label = "Image Gallery"
+
+
+class CallToActionBlock(blocks.StructBlock):
+    """
+    Call to Action - struct block example
+    """
+
+    title = blocks.CharBlock(required=False)
+    text = blocks.RichTextBlock(
+        features=['h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'ol', 'ul', 'link'], required=False)
+    buttons = blocks.ListBlock(ButtonBlock(required=False), default=[])
+
+    class Meta:
+        """Provide additional meta information."""
+
+        icon = "pick"
+        label = "Call to Action"
