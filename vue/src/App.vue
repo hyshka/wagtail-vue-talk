@@ -1,14 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav" class="mw7 center pv2">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/sample-flex-page">About</router-link>
-    </div>
+    <site-header></site-header>
     <transition name="fade" appear>
       <router-view/>
     </transition>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import SiteHeader from '@/components/SiteHeader.vue'
+
+export default {
+  components: {
+    SiteHeader,
+  },
+}
+</script>
 
 <style>
 @import "~tachyons";
