@@ -3,7 +3,7 @@
     <router-link
       class="f6 link dim ph3 pv2 dib black"
       v-for="page in this.pages"
-      :to="page.meta.html_url">
+      :to="page.meta.html_url.replace('http://localhost:8000', '')">
       {{ page.title }}
     </router-link>
   </div>
