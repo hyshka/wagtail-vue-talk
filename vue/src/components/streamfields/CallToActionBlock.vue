@@ -6,10 +6,14 @@
         class="f4"
         v-html="this.block.value.text"></div>
       <!-- WIP -->
-      <button-block
-        v-for="button in this.block.value.buttons"
-        :block="button"
-        ></button-block>
+      <div class="mv3">
+        <button-block
+          class="di mr3"
+          v-for="button in this.block.value.buttons"
+          color="white"
+          :block="button"
+          ></button-block>
+      </div>
     </div>
   </div>
 </template>

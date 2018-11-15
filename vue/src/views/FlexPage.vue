@@ -1,22 +1,26 @@
 <template>
   <div class="page">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h1>{{ this.page.title }}</h1>
+    <!-- banner -->
+    <div class="mw7 center pt5">
+      <h1 class="fw7 f1 lh-title mv0">
+        {{ this.page.title }}
+      </h1>
+    </div>
 
     <!-- streamfields -->
-    <streamfield :content="this.page.content"></streamfield>
+    <div class="page-content pt5">
+      <streamfield
+        v-for="block in this.page.content"
+        :key="block.id"
+        :block="block"
+        ></streamfield>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import Streamfield from '@/components/Streamfield.vue'
-
 export default {
   name: "FlexPage",
-  // components: {
-  //   Streamfield,
-  // },
   props: [
     "page",
   ],
