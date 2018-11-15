@@ -58,6 +58,42 @@ export default {
         })
       })
   },
+  beforeRouteUpdate (to, from, next) {
+    // TODO: clean up
+    // Most of this code is duplicated from the beforeRouteEnter() guard
+    // but that guard isn't run when the route changes, only on initial load.
+
+
+    // called before the route that renders this component is confirmed.
+    // does NOT have access to `this` component instance,
+    // because it has not been created yet when this guard is called!
+
+    console.log("WagtailPageHandler.beforeRouteUpdate", to, from)
+
+    // TODO: set hostname + port dynamically
+    axios
+      .get(`//localhost:8000/api/v2/pages/find/?html_path=${to.fullPath}`)
+      .then(response => {
+        console.log("WagtailPageHandler.beforeRouteUpdate response", response)
+
+        // catch 302/200 response, render matching Vue component
+        // pass page data from response to component
+        this.dynamicComponent = this.getWagtailPage(response.data.meta.type)
+        this.responseData = response.data
+        next()
+      })
+      .catch(error => {
+        console.log("WagtailPageHandler.beforeRouteUpdate error", error)
+
+        // catch 404 response, page doesn't exist
+        // retain request path but render NotFound component instead
+        // TODO: find a way to actually return a 404 response
+
+        this.dynamicComponent = NotFound
+        this.responseData = null
+        next()
+      })
+  },
   methods: {
     getWagtailPage(pageType) {
       // return registered component that's name matches our Wagtail page type
