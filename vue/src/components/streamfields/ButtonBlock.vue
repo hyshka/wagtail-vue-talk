@@ -24,8 +24,6 @@ export default {
     }
   },
   created() {
-    console.log('XXX', this.block)
-
     if (this.block.value) {
       this.text = this.block.value.text
       this.external_link = this.block.value.external_link

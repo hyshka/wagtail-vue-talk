@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <!-- <div id="nav"> -->
-    <!--   <router&#45;link to="/">Home</router&#45;link> | -->
-    <!--   <router&#45;link to="/about">About</router&#45;link> -->
-    <!-- </div> -->
-    <!-- TODO: transition -->
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/sample-flex-page">About</router-link>
+    </div>
     <router-view/>
   </div>
 </template>

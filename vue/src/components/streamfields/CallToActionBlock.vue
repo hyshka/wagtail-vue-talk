@@ -5,7 +5,6 @@
       <div
         class="f4"
         v-html="this.block.value.text"></div>
-      <!-- WIP -->
       <div class="mv3">
         <button-block
           class="di mr3"
