@@ -1,5 +1,5 @@
 <template>
-  <div class="content mw8 center ph4 pv4">
+  <div class="section content mw7 center">
     <!-- stream block -->
     <streamfield
       v-for="nestedBlock in this.block.value.content"

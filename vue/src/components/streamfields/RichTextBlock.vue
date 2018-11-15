@@ -1,5 +1,5 @@
 <template>
-  <div class="text" v-html="this.block.value"></div>
+  <div class="richtext" v-html="this.block.value"></div>
 </template>
 
 <script>

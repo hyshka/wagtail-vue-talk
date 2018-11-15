@@ -13,16 +13,19 @@
         </div>
       </div>
       <wagtail-image
+        class="db"
         :id="this.page.banner_image.id"
         ></wagtail-image>
     </div>
 
     <!-- streamfields -->
-    <streamfield
-      v-for="block in this.page.content"
-      :key="block.id"
-      :block="block"
-      ></streamfield>
+    <div class="page-content pt5">
+      <streamfield
+        v-for="block in this.page.content"
+        :key="block.id"
+        :block="block"
+        ></streamfield>
+    </div>
   </div>
 </template>
 
@@ -40,3 +43,9 @@ export default {
   ],
 }
 </script>
+
+<style>
+.section + .section {
+  margin-top: 4rem;
+}
+</style>

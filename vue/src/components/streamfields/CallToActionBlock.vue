@@ -1,12 +1,16 @@
 <template>
-  <div class="cta mw8 center ph4 pv4">
-    <h2>{{ this.block.value.title }}</h2>
-    <div v-html="this.block.value.text"></div>
-    <!-- WIP -->
-    <button-block
-      v-for="button in this.block.value.buttons"
-      :block="button"
-      ></button-block>
+  <div class="section cta bg-black-80 white pv5">
+    <div class="mw7 center">
+      <h2 class="fw7 f2 lh-title mv0">{{ this.block.value.title }}</h2>
+      <div
+        class="f4"
+        v-html="this.block.value.text"></div>
+      <!-- WIP -->
+      <button-block
+        v-for="button in this.block.value.buttons"
+        :block="button"
+        ></button-block>
+    </div>
   </div>
 </template>
 

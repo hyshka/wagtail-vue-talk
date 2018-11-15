@@ -1,6 +1,7 @@
 <template>
-  <div class="image">
+  <div class="image mv4">
     <wagtail-image
+      class="db"
       :id="this.block.value.image"
       ></wagtail-image>
   </div>
