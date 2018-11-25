@@ -1,20 +1,37 @@
 <template>
-  <div class="button mv3">
-    <router-link
+  <div class="mv3">
+    <wagtail-page
+      v-if="this.page"
       class="f6 link dim ba ph3 pv2 dib"
       :class="this.color ? this.color : 'black'"
-      :to="this.external_link"
-      >{{ this.text }}</router-link>
+      :id="this.page"
+      >{{ this.text }}</wagtail-page>
+    <wagtail-document
+      v-else-if="this.document"
+      class="f6 link dim ba ph3 pv2 dib"
+      :class="this.color ? this.color : 'black'"
+      :id="this.document"
+      >{{ this.text }}</wagtail-document>
+    <a
+      v-else
+      class="f6 link dim ba ph3 pv2 dib"
+      :class="this.color ? this.color : 'black'"
+      :href="this.external_link"
+      >{{ this.text }}</a>
   </div>
 </template>
 
 <script>
+import WagtailPage from "@/components/WagtailPage.vue"
+import WagtailDocument from "@/components/WagtailDocument.vue"
+
 export default {
   name: "ButtonBlock",
-  props: [
-    "block",
-    "color",
-  ],
+  props: ["block", "color"],
+  components: {
+    WagtailPage,
+    WagtailDocument,
+  },
   data() {
     return {
       text: "",
@@ -35,8 +52,6 @@ export default {
       this.page = this.block.page
       this.document = this.block.document
     }
-
-    //.TODO handle page and document ids
   },
 }
 </script>

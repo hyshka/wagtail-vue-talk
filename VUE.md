@@ -14,7 +14,7 @@ npm install -g @vue/cli
 vue create vue
 
 # options:
-# manually select features: Babel, Router, Vuex, Linter / Formatter
+# manually select features: Babel, Router, Linter / Formatter
 # user history mode for router (yes)
 # eslint + prettier
 # disable lint on save, enable lint + fix on commit
@@ -110,3 +110,5 @@ TODO
 - admin on subdomain?
 - do we even need vuex?
 - try yarn?
+- async components for page views?
+- transition router-view?

@@ -1,16 +1,30 @@
 <template>
-  <div class="mw7 center pv2">
-    <router-link
-      class="f6 link dim ph3 pv2 dib black"
-      v-for="page in this.pages"
-      :to="page.meta.html_url.replace('http://localhost:8000', '')">
-      {{ page.title }}
-    </router-link>
-  </div>
+  <header class="bg-dark-gray">
+    <div class="mw7 center pv2 flex justify-between">
+      <div>
+        <router-link class="f6 link dim ph3 pv2 dib white" exact to="/">
+          Wagtail + Vue.js
+        </router-link>
+      </div>
+      <div>
+        <!-- TODO: don't hardcode wagtail domain -->
+        <router-link
+          class="f6 link dim ph3 pv2 dib white"
+          active-class="bg-black"
+          exact
+          v-for="page in this.pages"
+          :key="page.id"
+          :to="page.meta.html_url.replace('http://localhost:8000', '')"
+        >
+          {{ page.title }}
+        </router-link>
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>
-import axios from "axios"
+import { getWagtailPagesInMenu } from "@/api"
 
 export default {
   name: "SiteHeader",
@@ -20,17 +34,9 @@ export default {
     }
   },
   created() {
-    // TODO: set hostname + port dynamically
-    // TODO: document this request url
-    axios
-      .get("//localhost:8000/api/v2/pages/?show_in_menus=true&fields=_,html_url,title")
-      .then(response => {
-        this.pages = response.data.items
-      })
+    getWagtailPagesInMenu().then(response => {
+      this.pages = response.data.items
+    })
   },
 }
 </script>
-
-<style>
-</style>
-

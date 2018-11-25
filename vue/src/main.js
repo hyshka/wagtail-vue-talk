@@ -1,18 +1,19 @@
-import Vue from 'vue'
-import VueMeta from 'vue-meta'
+import Vue from "vue"
+import VueMeta from "vue-meta"
 
-import App from './App.vue'
-import router from './router'
-
-import Streamfield from '@/components/Streamfield.vue'
+import App from "./App.vue"
+import router from "./router"
+import Streamfield from "@/components/Streamfield.vue"
 
 Vue.config.productionTip = false
 
+// Vue addons
 Vue.use(VueMeta)
 
+// Register streamfield as global component
 Vue.component("streamfield", Streamfield)
 
 new Vue({
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App),
+}).$mount("#app")

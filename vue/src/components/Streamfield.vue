@@ -1,17 +1,11 @@
 <template>
-  <component
-    :is="dynamicComponent"
-    :block="block"
-    ></component>
+  <component :is="dynamicComponent" :block="block"></component>
 </template>
 
 <script>
 import find from "lodash/find"
 
 // @ is an alias to /src
-// content - nested stream (text, button, image)
-// image_gallery - list block (image)
-// call_to_action
 import ContentBlock from "@/components/streamfields/ContentBlock.vue"
 import ButtonBlock from "@/components/streamfields/ButtonBlock.vue"
 import RichTextBlock from "@/components/streamfields/RichTextBlock.vue"
@@ -21,9 +15,7 @@ import CallToActionBlock from "@/components/streamfields/CallToActionBlock.vue"
 
 export default {
   name: "Streamfield",
-  props: [
-    "block",
-  ],
+  props: ["block"],
   components: {
     ContentBlock,
     ButtonBlock,
@@ -40,3 +32,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.section + .section {
+  margin-top: 4rem;
+}
+</style>
