@@ -1,9 +1,9 @@
 <template>
   <header class="bg-dark-gray">
-    <div class="mw7 center pv2 flex justify-between">
+    <div class="mw7 center pv2 flex justify-between items-center">
       <div>
-        <router-link class="f6 link dim ph3 pv2 dib white" exact to="/">
-          Wagtail + Vue.js
+        <router-link class="f6 link dim dib white flex items-center" exact to="/">
+          <img class="logo db" src="../assets/logo.png" alt="Wagtail + Vue.js">
         </router-link>
       </div>
       <div>
@@ -40,3 +40,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.logo {
+  max-height: 25px;
+}
+</style>
