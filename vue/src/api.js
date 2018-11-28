@@ -11,7 +11,6 @@ export function getWagtailPageByPath(path) {
 }
 
 export function getWagtailPagesInMenu() {
-  // TODO: document this request url
   return axios.get(
     "//localhost:8000/api/v2/pages/?show_in_menus=true&fields=_,html_url,title"
   )
