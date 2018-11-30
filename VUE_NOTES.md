@@ -13,6 +13,10 @@ TODO
 - vue-meta https://github.com/declandewet/vue-meta
 - axios https://github.com/axios/axios
 
+## Meta data
+TODO: document
+- all code is in WagtailPageHandler
+
 ## Misc
 - setup static host for staging
 - page preview
@@ -20,4 +24,3 @@ TODO
 - try yarn
 - async components for page views
 - transition router-view
-- wagtail page meta data

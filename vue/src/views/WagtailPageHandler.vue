@@ -21,6 +21,20 @@ export default {
     return {
       dynamicComponent: null,
       responseData: null,
+      title: "",
+      seoTitle: "",
+      description: "",
+    }
+  },
+  metaInfo() {
+    return {
+      title: this.title,
+      titleTemplate(titleChunk) {
+        return this.seoTitle ? this.seoTitle : `${titleChunk} - Wagtail + Vue.js`
+      },
+      meta: [
+        { name: 'description', content: this.description }
+      ],
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -37,6 +51,7 @@ export default {
           // access to component instance via `vm`
           vm.dynamicComponent = vm.getPageComponent(response.data.meta.type)
           vm.responseData = response.data
+          vm.setMetaData(response.data)
         })
       })
       .catch(error => {
@@ -64,6 +79,7 @@ export default {
       .then(response => {
         this.dynamicComponent = this.getPageComponent(response.data.meta.type)
         this.responseData = response.data
+        this.setMetaData(response.data)
         next()
       })
       .catch(error => {
@@ -80,6 +96,11 @@ export default {
         this.$options.components,
         obj => obj.name === pageType.replace("pages.", "")
       )
+    },
+    setMetaData(page) {
+      this.title = page.title
+      this.seoTitle = page.meta.seo_title
+      this.description = page.meta.search_description
     },
   },
 }

@@ -17,7 +17,6 @@
       /api/v2/pages/?show_in_menus=true&fields=_,html_url,title
     - Vue router "exact" prop
 
-
 ## Flavor
 - I'm not stopping here
 - How can we improve this
