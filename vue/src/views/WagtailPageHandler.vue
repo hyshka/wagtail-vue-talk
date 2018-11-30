@@ -8,14 +8,12 @@ import find from "lodash/find"
 // @ is an alias to /src
 import { getWagtailPageByPath } from "@/api"
 import NotFound from "@/views/NotFound.vue"
-import HomePage from "@/views/HomePage.vue"
-import FlexPage from "@/views/FlexPage.vue"
 
 export default {
   name: "WagtailPageHandler",
   components: {
-    HomePage,
-    FlexPage,
+    HomePage: () => import('@/views/HomePage.vue'),
+    FlexPage: () => import("@/views/FlexPage.vue"),
   },
   data() {
     return {

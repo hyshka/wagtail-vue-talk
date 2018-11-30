@@ -19,8 +19,8 @@ TODO: document
 
 ## Misc
 - setup static host for staging
-- page preview
 - admin on subdomain
+- page preview
 - try yarn
 - async components for page views
 - transition router-view
