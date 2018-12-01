@@ -1,5 +1,7 @@
 <template>
-  <component :is="dynamicComponent" :page="responseData"></component>
+  <transition name="fade" appear>
+    <component class="absolute w-100" :is="dynamicComponent" :page="responseData" :key="$route.fullPath"></component>
+  </transition>
 </template>
 
 <script>
@@ -103,3 +105,12 @@ export default {
   },
 }
 </script>
+
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>

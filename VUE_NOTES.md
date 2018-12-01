@@ -17,10 +17,20 @@ TODO
 TODO: document
 - all code is in WagtailPageHandler
 
+## Async components for page views
+TODO: document
+- all code is in WagtailPageHandler
+- loads vue components for page template as-needed
+- integreated into webpack so they get split into separate bundles
+
+## Page transition
+TODO: document
+- all code is in WagtailPageHandler
+- using vue.js transition
+- page views need to be keyed (to route path) and positioned absolute
+
 ## Misc
 - setup static host for staging
 - admin on subdomain
 - page preview
 - try yarn
-- async components for page views
-- transition router-view
