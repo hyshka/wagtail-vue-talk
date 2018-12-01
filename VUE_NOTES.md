@@ -30,6 +30,7 @@ TODO: document
 - page views need to be keyed (to route path) and positioned absolute
 
 ## Misc
+- lazy load images
 - setup static host for staging
 - admin on subdomain
 - page preview

@@ -1,5 +1,6 @@
 import Vue from "vue"
 import VueMeta from "vue-meta"
+import VueLazyload from 'vue-lazyload'
 
 import App from "./App.vue"
 import router from "./router"
@@ -9,6 +10,9 @@ Vue.config.productionTip = false
 
 // Vue addons
 Vue.use(VueMeta)
+Vue.use(VueLazyload, {
+  loading: '/loading.gif',
+})
 
 // Register streamfield as global component
 Vue.component("streamfield", Streamfield)

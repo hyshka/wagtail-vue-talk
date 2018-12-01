@@ -1,6 +1,6 @@
 <template>
   <!-- TODO: don't hardcode wagtail domain -->
-  <img :src="'//localhost:8000' + this.download_url" :alt="this.title" />
+  <img v-lazy="'//localhost:8000' + this.download_url" :alt="this.title" />
 </template>
 
 <script>
