@@ -39,3 +39,8 @@ TODO: document
 - admin on subdomain
 - page preview
 - try yarn
+
+## Gotchas
+- Had to register streamfield component globally
+- Can't assign a component dynamically from within vue-router
+- Had to manually remove domain + port from URLs from the API to make then a relative path we could use for the router (Improve: move this into the router logic)
