@@ -1,12 +1,6 @@
-# 1984
+# wagtail-vue-talk
 
-One: A re-focussed product line.
-
-Two: An advertising campaign to tell people the company has a pulse.
-
-## Development notes
-
-Based on https://github.com/hyshka/wagtail-vue-talk
+A trimmed down, revised fork of https://github.com/hyshka/wagtail-vue-talk
 
 The Django server will run on port `8000`, and the Node.js server compiling the Vue.js app will run on port `8080`.
 
