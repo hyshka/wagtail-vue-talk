@@ -10,7 +10,11 @@ from wagtail.core.fields import StreamField
 
 from .streamfields import ContentBlock, ImageGalleryBlock, CallToActionBlock
 
-from grapple.models import *
+from grapple.models import (
+    GraphQLImage,
+    GraphQLString,
+    GraphQLStreamfield,
+)
 
 class HomePage(Page):
     """A home page class."""

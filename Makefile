@@ -29,3 +29,6 @@ enter_fe: ## Enter frontend container
 
 clean: ## Stop and remove all Docker containers
 	docker-compose down
+
+refresh: clean up enter
+	## Let's start again

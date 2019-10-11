@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Kalob Taulien <kalob@kalob.io>
 
 # Needed for better experience in container terminal
@@ -8,7 +8,6 @@ ENV TERM=xterm-256color
 RUN apt-get update && apt-get install -y \
       git \
       wget \
-      # Python, remove 3 for wagtail sites
       python3-dev \
       python3-pip
 

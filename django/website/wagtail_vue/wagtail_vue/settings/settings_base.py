@@ -239,10 +239,8 @@ WAGTAIL_SITE_NAME = "Wagtail/Vue Website"
 # ======== END WAGTAIL SITE CONFIGURATION
 
 # ======== GRAPPLE CONFIGURATION
-GRAPHENE = {"SCHEMA": "grapple.schema.schema"}
-GRAPPLE_APPS = {
-    "home": ""
-}
+GRAPHENE = { "SCHEMA": "grapple.schema.schema" }
+GRAPPLE_APPS = { "pages": "" }
 # ======== END GRAPPLE CONFIGURATION
 
 # ======== ERROR MESSAGE FOR MISSING ENVIRONMENT VARIABLES

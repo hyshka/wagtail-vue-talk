@@ -21,6 +21,8 @@ django-admin.py createsuperuser
 
 # start django server (inside container)
 django-admin.py runserver 0.0.0.0:8000
+# ..or use the handy alias:
+djr
 
 # enter frontend (node.js) container
 make enter_fe
