@@ -34,7 +34,7 @@ export default {
   components: {
     WagtailImage,
   },
-  props: ["page"],
+  props: ["page"]
 }
 </script>
 

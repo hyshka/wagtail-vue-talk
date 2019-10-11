@@ -8,7 +8,7 @@
 import find from "lodash/find"
 
 // @ is an alias to /src
-import { getWagtailPageByPath } from "@/api"
+import { getWagtailPageByPath, getWagtailPageBySlug, getWagtailPage } from "@/api"
 import NotFound from "@/views/NotFound.vue"
 
 export default {
@@ -42,23 +42,37 @@ export default {
     // does NOT have access to `this` component instance,
     // because it has not been created yet when this guard is called!
 
-    getWagtailPageByPath(to.fullPath)
+    getWagtailPageBySlug(to.fullPath.replace('/',''))
       .then(response => {
         // catch 302/200 response, render matching Vue component
         // pass page data from response to component
-
         next(vm => {
           // access to component instance via `vm`
-          vm.dynamicComponent = vm.getPageComponent(response.data.meta.type)
-          vm.responseData = response.data
-          vm.setMetaData(response.data)
+          if (typeof response.data.items != 'undefined') {
+            getWagtailPage(response.data.items[0].id)
+              .then(response => {
+                vm.responseData = response.data
+                vm.dynamicComponent = vm.getPageComponent(vm.responseData.meta.type)
+                vm.setMetaData(vm.responseData)
+              })
+              .catch(error => {
+                next(vm => {
+                  vm.dynamicComponent = NotFound
+                  vm.responseData = null
+                })
+              })
+          } else {
+            vm.responseData = response.data
+            vm.dynamicComponent = vm.getPageComponent(vm.responseData.meta.type)
+            vm.setMetaData(vm.responseData)
+          }
         })
       })
       .catch(error => {
         // catch 404 response, page doesn't exist
         // retain request path but render NotFound component instead
         // TODO: find a way to actually return a 404 response
-
+        console.error(error)
         next(vm => {
           // access to component instance via `vm`
           vm.dynamicComponent = NotFound
@@ -67,24 +81,37 @@ export default {
       })
   },
   beforeRouteUpdate(to, from, next) {
-    // called when the route that renders this component has changed,
-    // but this component is reused in the new route.
-    // has access to `this` component instance.
-
-    // TODO: clean up
-    // Most of this code is duplicated from the beforeRouteEnter() guard
-    // but that guard isn't run when the route changes, only on initial load.
-
-    getWagtailPageByPath(to.fullPath)
+    // here we go again ...
+    // https://router.vuejs.org/guide/advanced/navigation-guards.html
+    let vm = this
+    getWagtailPageBySlug(to.fullPath.replace('/',''))
       .then(response => {
-        this.dynamicComponent = this.getPageComponent(response.data.meta.type)
-        this.responseData = response.data
-        this.setMetaData(response.data)
-        next()
+        if (typeof response.data.items != 'undefined') {
+          getWagtailPage(response.data.items[0].id)
+            .then(response => {
+              vm.responseData = response.data
+              vm.dynamicComponent = vm.getPageComponent(vm.responseData.meta.type)
+              vm.setMetaData(vm.responseData)
+            })
+            .catch(error => {
+              next(vm => {
+                vm.dynamicComponent = NotFound
+                vm.responseData = null
+              })
+            })
+        } else {
+          vm.responseData = response.data
+          vm.dynamicComponent = vm.getPageComponent(vm.responseData.meta.type)
+          vm.setMetaData(vm.responseData)
+        }
       })
       .catch(error => {
-        this.dynamicComponent = NotFound
-        this.responseData = null
+        // catch 404 response, page doesn't exist
+        // retain request path but render NotFound component instead
+        // TODO: find a way to actually return a 404 response
+        console.error(error)
+        vm.dynamicComponent = NotFound
+        vm.responseData = null
         next()
       })
   },

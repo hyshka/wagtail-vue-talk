@@ -7,14 +7,13 @@
         </router-link>
       </div>
       <div>
-        <!-- TODO: don't hardcode wagtail domain -->
         <router-link
           class="f6 link dim ph3 pv2 dib white"
           active-class="bg-black"
           exact
           v-for="page in this.pages"
           :key="page.id"
-          :to="page.meta.html_url.replace('http://localhost:8000', '')"
+          :to="page.meta.slug"
         >
           {{ page.title }}
         </router-link>

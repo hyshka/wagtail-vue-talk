@@ -1,8 +1,12 @@
-# wagtail-vue-talk
-How to vue wagtail in a better light
+# 1984
 
+One: A re-focussed product line.
 
-## Development with Docker
+Two: An advertising campaign to tell people the company has a pulse.
+
+## Development notes
+
+Based on https://github.com/hyshka/wagtail-vue-talk
 
 The Django server will run on port `8000`, and the Node.js server compiling the Vue.js app will run on port `8080`.
 
@@ -16,6 +20,10 @@ make up
 
 # enter backend (python) container
 make enter
+
+# initialize database (inside container)
+django-admin.py migrate
+django-admin.py createsuperuser
 
 # start django server (inside container)
 django-admin.py runserver 0.0.0.0:8000
