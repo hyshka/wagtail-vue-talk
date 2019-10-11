@@ -10,6 +10,7 @@ from wagtail.core.fields import StreamField
 
 from .streamfields import ContentBlock, ImageGalleryBlock, CallToActionBlock
 
+from grapple.models import *
 
 class HomePage(Page):
     """A home page class."""
@@ -50,6 +51,14 @@ class HomePage(Page):
         APIField("content"),
     ]
 
+    graphql_fields = [
+        GraphQLString("title"),
+        GraphQLString("banner_subtitle"),
+        GraphQLImage("banner_image"),
+        GraphQLImage("banner_image_thumbnail"),
+        GraphQLStreamfield("content"),
+    ]
+
     class Meta:
         """Meta information."""
 
@@ -77,6 +86,11 @@ class FlexPage(Page):
     api_fields = [
         APIField("title"),
         APIField("content"),
+    ]
+
+    graphql_fields = [
+        GraphQLString("title"),
+        GraphQLStreamfield("content"),
     ]
 
     class Meta:

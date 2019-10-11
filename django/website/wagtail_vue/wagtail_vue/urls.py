@@ -11,11 +11,15 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from .api import api_router
 
+from grapple import urls as grapple_urls
+
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^api/v2/', api_router.urls),
+    url(r"", include(grapple_urls)),
+
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 

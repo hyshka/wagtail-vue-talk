@@ -1,7 +1,8 @@
 bpython
+Pillow==4.*
 Django==2.2.*
 django-adminactions==1.*
 django-extensions==1.*
-Pillow==4.*
-wagtail==2.6.*
 django-cors-headers==2.4.*
+wagtail==2.6.*
+wagtail_grapple
