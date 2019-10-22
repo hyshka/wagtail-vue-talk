@@ -3,8 +3,8 @@
 SHELL := /bin/bash
 CONTAINERNAME_BACKEND=wagtail_vue_backend
 IMAGENAME_BACKEND=wagtail_vue:backend
-CONTAINERNAME_FRONTEND=wagtail_vue_frontend
-IMAGENAME_FRONTEND=wagtail_vue:frontend
+CONTAINERNAME_FRONTEND=wagtail_vue_gridsome
+IMAGENAME_FRONTEND=wagtail_vue:gridsome
 
 build: ## Build the Docker images
 	docker-compose -p wagtail_vue build
@@ -24,11 +24,14 @@ down: ## Stop the backend Docker container
 enter: ## Enter backend container
 	docker exec -it $(CONTAINERNAME_BACKEND) /bin/bash
 
-enter_fe: ## Enter frontend container
+frontend: ## Enter frontend container
 	docker exec -it $(CONTAINERNAME_FRONTEND) /bin/sh
 
 clean: ## Stop and remove all Docker containers
 	docker-compose down
+
+destroy: ## Remove all our Docker images
+	docker rmi -f $(IMAGENAME_BACKEND) $(IMAGENAME_FRONTEND)
 
 refresh: clean up enter
 	## Let's start again

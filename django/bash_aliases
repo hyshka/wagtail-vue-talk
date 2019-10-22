@@ -1,5 +1,6 @@
 # Django Aliases
 alias dj="django-admin.py"
+alias djm="django-admin.py migrate"
 alias djr="django-admin.py runserver 0.0.0.0:8000"
 
 # Print Message
@@ -8,4 +9,5 @@ alias djr="django-admin.py runserver 0.0.0.0:8000"
 printf "%s\n" \
   "Here are some common aliases for our stack:" \
   'dj="django-admin.py"' \
+  'djm="django-admin.py migrate"' \
   'djr="django-admin.py runserver 0.0.0.0:8000"'
