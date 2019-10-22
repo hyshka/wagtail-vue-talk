@@ -47,14 +47,14 @@ MIDDLEWARE += ( # noqa
 
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation # noqa
-INTERNAL_IPS = ('127.0.0.1', '172.17.0.1',)
+INTERNAL_IPS = ('127.0.0.1', '172.17.0.1', '172.17.0.2')
 
 # ======== END TOOLBAR CONFIGURATION
 
 ALLOWED_HOSTS += [ # noqa
     'localhost',
     'backend',
-]
+] + list(INTERNAL_IPS)
 
 CORS_ORIGIN_ALLOW_ALL = True
 

@@ -7,7 +7,7 @@ module.exports = {
     {
       use: '@gridsome/source-graphql',
       options: {
-        url: 'http://localhost:8000/graphql',
+        url: 'http://backend:8000/graphql',
 
         fieldName: 'wagtail',
         // typeName: 'puppyTypes',
