@@ -1,5 +1,5 @@
 bpython
-Django==2.1
+Django==2.1.11
 django-adminactions==1.*
 django-extensions==1.*
 Pillow==4.*
