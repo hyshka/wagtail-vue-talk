@@ -1,31 +1,29 @@
 .PHONY: build
 
-SHELL := /bin/bash
-CONTAINERNAME_BACKEND=wagtail_vue_backend
-IMAGENAME_BACKEND=wagtail_vue:backend
-CONTAINERNAME_FRONTEND=wagtail_vue_frontend
-IMAGENAME_FRONTEND=wagtail_vue:frontend
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\\033[36m%-30s\\033[0m %s\\n", $$1, $$2}'
 
-build: ## Build the Docker images
+build: ## Build the Docker image
 	docker-compose -p wagtail_vue build
 
-up: build ## Bring the  Docker containers up
-	docker-compose -p wagtail_vue up -d || echo 'Already up!'
+up: build ## Bring the container up
+	docker-compose -p wagtail_vue up -d
 
-upwin:  ## Bring the Docker container up for bash on ubuntu folk
-	export WINDIR="$(subst /mnt/c,//c,$(CURDIR))/" && make up
-
-lint: build ## Lint the python code.
-	docker run -v $(CURDIR)/django:/app $(IMAGENAME_BACKEND) /bin/bash -c 'flake8 website'
-
-down: ## Stop the backend Docker container
+down: ## Stop the container
 	docker-compose -p wagtail_vue stop
 
-enter: ## Enter backend container
-	docker exec -it $(CONTAINERNAME_BACKEND) /bin/bash
+enter: ## Enter the running container
+	docker-compose -p wagtail_vue exec backend /bin/bash
 
-enter_fe: ## Enter frontend container
-	docker exec -it $(CONTAINERNAME_FRONTEND) /bin/sh
+enter_frontend: ## Enter the running container
+	docker-compose -p wagtail_vue exec frontend /bin/bash
 
-clean: ## Stop and remove all Docker containers
-	docker-compose down
+clean: down ## Remove stoped containers
+	docker-compose -p wagtail_vue rm
+
+lint: ## Run linters on code
+	docker-compose -p wagtail_vue exec backend bash -c "flake8 ."
+	docker-compose -p wagtail_vue exec backend bash -c "black --diff --check --exclude 'migrations|node_modules' ."
+
+lint_frontend: ## Run linters on code
+	docker-compose -p wagtail_vue exec frontend bash -c "npm run --silent lint"

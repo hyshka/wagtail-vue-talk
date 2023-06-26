@@ -8,9 +8,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ${WINDIR}./django:/app
+      - ./django:/usr/src/app
+    command: /bin/bash
+    tty: true
     stdin_open: true
-    command: /bin/sh -c "while true; do echo hi; sleep 1; done;"
   frontend:
     network_mode: "bridge"
     links:
@@ -21,8 +22,8 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./vue:/app
-      - /app/node_modules
+      - ./vue:/usr/src/app
+      - /usr/src/app/node_modules
+    command: /bin/sh
+    tty: true
     stdin_open: true
-    command: /bin/sh -c "while true; do echo hi; sleep 1; done;"
-

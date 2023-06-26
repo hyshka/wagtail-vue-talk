@@ -1,0 +1,10 @@
+[flake8]
+exclude =
+    venv,
+    migrations,
+	__init__.py,
+    settings,
+    *.pyc,
+ignore = E126, E501, W503
+max-line-length = 88
+max-complexity = 18

@@ -1,0 +1,9 @@
+-r base.txt
+black
+flake8-bugbear
+flake8-docstrings
+flake8-isort
+flake8
+ipython
+isort
+pep8-naming
